@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en" lang="en">
+
+<head>
+    <title>score</title>
+    {% load static %}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static
+    'css/bootstrap.min.css'%}">
+    <script type="text/javascript" src="{% static
+    'js/bootstrap.min.js'%}"></script>
+    <style>
+        body {
+            background-color: #f2f2f2;
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333333;
+        }
+
+        form {
+            margin: auto;
+            background-color: #ffffff;
+            width: 26%;
+            padding: 20px;
+            box-shadow: 0 0 10px #888888;
+            border-radius: 10px;
+
+        }
+
+        .score {
+            margin: auto;
+            margin-bottom: 50px;
+            margin-top: 50px;
+
+            background-color: #ffffff;
+            width: 25%;
+            padding: 20px;
+            box-shadow: 0 0 10px #888888;
+            border-radius: 10px;
+        }
+
+        button {
+            padding: 10px;
+            font-size: 16px;
+            margin: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="score">
+
+        {% csrf_token %}
+        {%if current == 1%}
+        {{dataset.teamname1}}
+        {{dataset.score1}} / {{dataset.wicket1}}
+        over : {{dataset.over1}}<br>
+        <!-- {%if dataset.current_ball == 6%}
+            {{dataset.over1}}<br> -->
+        <!-- {%else%} -->
+        <!-- {%endif%}<br> -->
+        {{dataset.teamname2}}
+        {{dataset.score2}} / {{dataset.wicket2}}
+        {%else%}
+        {{dataset.teamname1}}
+        {{dataset.score1}} / {{dataset.wicket1}}
+        over: {{dataset.over1}}<br>
+        {{dataset.teamname2}}
+        {{dataset.score2}} / {{dataset.wicket2}}
+        over :{{dataset.over2}}
+        <!-- {%if dataset.current_ball == 6%} -->
+        <!-- {{dataset.over2}}<br> -->
+        <!-- {%else%} -->
+        <!-- {%endif%} -->
+        {%endif%}<br><br>
+        {{player1}}* / {{sc1}} / {{ball1}}<br>
+        {{player2}} / {{sc2}} / {{ball2}}<br>
+        {{player3}} / {{wiket}} / {{br}}<br>
+        {%if current == 2%}
+        {%if remainingrun > 0 %}
+        To Win {{remainingrun}} run left in{{dataset.balls}} balls.
+        {% else %}
+        To Win 0 run left in{{dataset.balls}} balls.
+        {%endif%}
+        {%endif%}<br>
+    </div>
+    <form action="update_score" method="post">
+        {% csrf_token %}
+        <button name="dot" type="submit">0</button>
+        <button name="one" type="submit">1</button>
+        <button name="two" type="submit">2</button>
+        <button name="three" type="submit">3</button>
+        <button name="four" type="submit">4</button><br>
+        <button name="five" type="submit">5</button>
+        <button name="six" type="submit">6</button>
+        <button name="wicket" type="submit">wicket</button>
+        <button name="wide" type="submit">wide</button><br>
+        <button name="noball" type="submit">noball</button>
+        <button name="freehit" type="submit">freehit</button>
+        <!-- <button name="result" type="submit">result</button><br> -->
+
+        <!-- <button name="wide1" type="submit">wide + 1</button><br>
+        <button name="wide2" type="submit">wide + 2</button><br>
+        <button name="wide3" type="submit">wide + 3</button><br>
+        <button name="wide4" type="submit">wide + 4</button><br> -->
+        <button name="inning_end" type="submit">inning end</button><br>
+    </form>
+</body>
+
+</html>

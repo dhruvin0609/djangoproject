@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        body {
+            background-color: #f2f2f2;
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333333;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333333;
+        }
+
+        table {
+            margin: auto;
+            border-collapse: collapse;
+            background-color: #ffffff;
+            width: 50%;
+        }
+
+        th,
+        td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #dddddd;
+        }
+
+        th {
+            background-color: #333333;
+            color: #ffffff;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+
+<body>
+    {% csrf_token %}
+    <!-- {{team1.teamname}}<br>
+    {%for data in players1%}
+    {{data.playername}}
+    <br>
+
+    {%endfor%}
+    {{team2.teamname}}<br>
+    {%for data in players2%}
+    {{data.playername}}<br>
+    {%endfor%} -->
+    <h1>Cricket Scoring Page</h1>
+    <h2>Venue {{matchdetails.venue}}</h2>
+    <h2>overs {{matchdetails.over}}</h2>
+    {%if match.win == 0%}
+    <h2>tie</h2>
+    {%endif%}
+    {%if match.win == 1%}
+    <h2>Win: {{team1.teamname}}</h2>
+    {%endif%}
+    {%if match.win == 2%}
+    <h2>Win {{team1.teamname}}</h2>
+    {%endif%}
+    <table>
+        <h1>{{team1.teamname}}</h1><br>
+        <tr>
+            <th>Batsman</th>
+            <th>Runs</th>
+            <th>Balls Faced</th>
+            <th>Wicket</th>
+            <th>Runs in bowling</th>
+        </tr>
+        {%for data in players1%}
+        <tr>
+            <td>{{data.playername}}</td>
+            <td>{{data.score}}</td>
+            <td>{{data.ball}}</td>
+            <td>{{data.wicket}}</td>
+            <td>{{data.brun}}</td>
+        </tr>
+        {%endfor%}
+    </table>
+    <table>
+        <h1>{{team2.teamname}}</h1><br>
+        <tr>
+            <th>Batsman</th>
+            <th>Runs</th>
+            <th>Balls Faced</th>
+            <th>Wicket</th>
+            <th>Runs in bowling</th>
+        </tr>
+        {%for data in players2%}
+        <tr>
+            <td>{{data.playername}}</td>
+            <td>{{data.score}}</td>
+            <td>{{data.ball}}</td>
+            <td>{{data.wicket}}</td>
+            <td>{{data.brun}}</td>
+        </tr>
+        {%endfor%}
+    </table>
+</body>
+
+</html>

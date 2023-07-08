@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>result</title>
+</head>
+
+<body>
+    <h1>
+        {%if dataset.win == 0%}
+        Match tie!!
+        {%elif dataset.win == 1%}
+        The Winner is:{{dataset.teamname1}}
+        {%else%}
+        The Winner is:{{dataset.teamname2}}
+        {%endif%}
+    </h1>
+    <form method="post" action="/">
+        {% csrf_token %}
+        <input type="submit" value="home"></input>
+    </form>
+</body>
+
+
+</html>

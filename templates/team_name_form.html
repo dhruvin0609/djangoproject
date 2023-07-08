@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Add teams</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static
+    'css/bootstrap.min.css'%}">
+    <script type="text/javascript" src="{% static
+    'js/bootstrap.min.js'%}"></script>
+    <style>
+        body {
+            font-family: 'Lato', sans-serif;
+        }
+
+        h1 {
+            margin-bottom: 40px;
+        }
+
+        label {
+            color: #333;
+        }
+
+        form {
+            margin: auto;
+            background-color: #ffffff;
+            width: 60%;
+            padding: 20px;
+            box-shadow: 0 0 10px #888888;
+            border-radius: 10px;
+        }
+
+        .btn-send {
+            font-weight: 300;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            width: 80%;
+            margin-left: 3px;
+        }
+
+        .help-block.with-errors {
+            color: #ff5050;
+            margin-top: 5px;
+
+        }
+
+        .card {
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="row ">
+        <div class="col-lg-7 mx-auto">
+            <div class="card mt-2 mx-auto p-4 bg-light">
+                <div class="card-body bg-light">
+
+                    <div class="container">
+                        <form action="team_name" method="post">
+                            {% csrf_token %}
+
+                            <div class="controls">
+
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            team: <input type="text" name="team1">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            player1: <input type="text" name="player1">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            player2: <input type="text" name="player2">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            player3: <input type="text" name="player3">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            player4; <input type="text" name="player4">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            player5: <input type="text" name="player5">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            player6: <input type="text" name="player6">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            player7: <input type="text" name="player7">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            player8: <input type="text" name="player8">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            player9: <input type="text" name="player9">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            player10: <input type="text" name="player10">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            player11: <input type="text" name="player11">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+
+                                    <input type="submit" class="btn btn-success btn-send  pt-2 btn-block
+                              " value="submit">
+
+                                </div>
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+
+            </div>
+            <!-- /.8 -->
+
+        </div>
+        <!-- /.row-->
+
+    </div>
+    <!-- <form action="team_name" method="post">
+        {% csrf_token %}
+        team:<input type="text" name="team1"><br>
+        player1: <input type="text" name="player1"><br>
+        player2: <input type="text" name="player2"><br>
+        player3: <input type="text" name="player3"><br>
+        player4: <input type="text" name="player4"><br>
+        player5: <input type="text" name="player5"><br>
+        player6: <input type="text" name="player6"><br>
+        player7: <input type="text" name="player7"><br>
+        player8: <input type="text" name="player8"><br>
+        player9: <input type="text" name="player9"><br>
+        player10: <input type="text" name="player10"><br>
+        player11: <input type="text" name="player11"><br>
+        <input type="submit" value="Submit">
+    </form> -->
+</body>
+
+</html>

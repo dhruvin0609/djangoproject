@@ -1,0 +1,115 @@
+<html>
+
+<head>
+    <title>
+        Cricket Wallah
+    </title>
+    <meta charset="utf-8">
+    {% load static %}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static
+    'css/bootstrap.min.css'%}">
+    <script type="text/javascript" src="{% static
+    'js/bootstrap.min.js'%}"></script>
+    <style>
+        #m1:hover {
+            background-color: rgb(41, 120, 149);
+        }
+
+        #m1 {
+            background-color: rgb(220, 234, 239);
+            transition: all 0.3s ease-in-out;
+            border-style: ridge;
+            /* margin-left: 5%; */
+        }
+
+        #m2 {
+            column-gap: 20px;
+            margin-left: 5%;
+            margin-right: 5%;
+            margin-bottom: 1.5em;
+        }
+
+        .t1 {
+            text-align: justify;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <nav class="navbar bg-body-tertiary">
+                <div class="container">
+                    <a class="navbar-brand" href="#">
+                        {% load static %}<img src="{% static 'logo.png' %}" width="70" height="50">
+                    </a>
+                </div>
+            </nav>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data- target="#navbarText"
+                aria-controls="navbarText" aria-expanded="False" aria- label="Toggle navigation">
+
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarText">
+                <ul class="navbar-nav mr-auto">
+                    {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="logout">Logout</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="newmatch">Addnewmatch</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Welcome, {{user.username}}</a>
+                    </li>
+                    {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="login">Login</a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div>
+        <form method="POST" action="plyerdetails">
+            {% csrf_token %}
+            {% for data in dataset %}
+            <button type="submit" name="id" value="{{ data.id }}" class="col" id="m1">
+                <!-- add other form fields here -->
+                <!-- <input type="submit" value=""> -->
+                <p>One-off tournament T20 1 of 1</p><br>
+                <div class="t1">
+                    <dl>
+                        <p>
+                            <img src="https://upload.wikimedia.org/wikipedia/en/thumb/4/41/Flag_of_India.svg/255px-Flag_of_India.svg.png"
+                                width="30" height="30"> {{data.teamname1}}
+                            {{data.score1}}/{{data.wicket1}}
+                            {{data.over1}}
+                        </p>
+                    </dl>
+                    <dl>
+                        <p>
+                            <img src="https://upload.wikimedia.org/wikipedia/en/thumb/4/41/Flag_of_India.svg/255px-Flag_of_India.svg.png"
+                                width="30" height="30">{{data.teamname2}}
+                            {{data.score2}}/{{data.wicket2}}
+                            {{data.over2}}
+                        </p>
+                        <P>
+
+                        </P>
+                    </dl>
+                </div>
+                </input>
+            </button>
+            {%endfor%}
+            <!-- </div> -->
+
+        </form>
+    </div>
+</body>
+
+</html>
